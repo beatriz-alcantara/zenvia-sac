@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-section>
-      <apexchart ref="realtimeChart" type="bar" height="200" :options="chartOptions" :series="series" />
+      <apexchart ref="realtimeChart" type="bar" :height="Height" :options="chartOptions" :series="series" />
     </q-card-section>
   </q-card>
 </template>
@@ -9,15 +9,19 @@
 <script>
 export default {
   name: 'GraphBar',
+  props: {
+    isHorizontal: Boolean,
+    Height: String
+  },
   data () {
     return {
       series: [{
         name: 'Atendimentos',
-        data: [10, 41]
+        data: [10, 41, 20]
       }],
       chartOptions: {
         chart: {
-          height: 350,
+          height: 150,
           type: 'bar',
           events: {
             click: function (chart, w, e) {
@@ -27,8 +31,9 @@ export default {
         },
         plotOptions: {
           bar: {
-            columnWidth: '45%',
-            distributed: true
+            columnWidth: '50%',
+            distributed: true,
+            horizontal: this.isHorizontal
           }
         },
         dataLabels: {
@@ -43,10 +48,14 @@ export default {
             ['Não atendidas']
           ],
           labels: {
+            show: false,
             style: {
               fontSize: '12px'
             }
           }
+        },
+        yaxis: {
+          show: false
         }
       }
     }

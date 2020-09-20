@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar class="bg-dark">
+    <q-header elevated style="position: relative">
+      <q-toolbar class="bg-primary q-py-md row" style="z-index: 1">
         <!-- <q-btn
           flat
           dense
@@ -10,13 +10,31 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         /> -->
+        <q-toolbar-title class="row col-2 q-pb-xl"> VINDII </q-toolbar-title>
 
-        <q-toolbar-title>
-          SAC
-        </q-toolbar-title>
-
+        <div class="col-8 row justify-center q-pb-lg">
+          <div class="col-12 row justify-center">
+            <span class="col-8"> Pesquise uma empresa </span>
+          </div>
+          <q-input class="col-8" dark dense outlined placeholder="Digite o nome da loja">
+            <template v-slot:append>
+              <q-icon color="white" name="search" dense/>
+            </template>
+          </q-input>
+          <div class="col-12 row justify-center q-mt-sm">
+            <span class="col-8 text-h5"> Empresa X - Varejo </span>
+          </div>
+        </div>
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
+      <div class="col-12 row justify-center">
+        <div class="col-12 row justify-center q-gutter-md topics">
+          <card-topics Icon="icone-reclam.png" :Amount="3600" Title="Reclamações"/>
+          <card-topics Icon="icone-views.png" :Amount="13500" Title="Visualizações"/>
+          <card-topics Icon="icone-call.png" :Amount="8506" Title="Chamadas"/>
+          <card-topics Icon="icone-naores.png" :Amount="1523" Title="Não resolvidas"/>
+        </div>
+      </div>
     </q-header>
 
     <!-- <q-drawer
@@ -41,68 +59,32 @@
       </q-list>
     </q-drawer> -->
 
-    <q-page-container>
+    <q-page-container class="my-background">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-// import EssentialLink from 'components/EssentialLink.vue'
-
-// const linksData = [
-//   {
-//     title: 'Docs',
-//     caption: 'quasar.dev',
-//     icon: 'school',
-//     link: 'https://quasar.dev'
-//   },
-//   {
-//     title: 'Github',
-//     caption: 'github.com/quasarframework',
-//     icon: 'code',
-//     link: 'https://github.com/quasarframework'
-//   },
-//   {
-//     title: 'Discord Chat Channel',
-//     caption: 'chat.quasar.dev',
-//     icon: 'chat',
-//     link: 'https://chat.quasar.dev'
-//   },
-//   {
-//     title: 'Forum',
-//     caption: 'forum.quasar.dev',
-//     icon: 'record_voice_over',
-//     link: 'https://forum.quasar.dev'
-//   },
-//   {
-//     title: 'Twitter',
-//     caption: '@quasarframework',
-//     icon: 'rss_feed',
-//     link: 'https://twitter.quasar.dev'
-//   },
-//   {
-//     title: 'Facebook',
-//     caption: '@QuasarFramework',
-//     icon: 'public',
-//     link: 'https://facebook.quasar.dev'
-//   },
-//   {
-//     title: 'Quasar Awesome',
-//     caption: 'Community Quasar projects',
-//     icon: 'favorite',
-//     link: 'https://awesome.quasar.dev'
-//   }
-// ]
+import CardTopics from 'components/CardTopics.vue'
 
 export default {
   name: 'MainLayout',
-  // components: { EssentialLink },
+  components: {
+    CardTopics
+  },
   data () {
     return {
       leftDrawerOpen: false
-      // essentialLinks: linksData
     }
   }
 }
 </script>
+
+<style>
+.topics {
+  position: absolute;
+  z-index: 2;
+  top: 20vh;
+}
+</style>
