@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated style="position: relative">
+    <q-header elevated>
       <q-toolbar class="bg-primary q-py-md row" style="z-index: 1">
         <q-toolbar-title class="row col-2 q-pb-xl"> VINDII </q-toolbar-title>
 
@@ -13,18 +13,9 @@
               <q-icon color="white" name="search" dense @click="getLoja()"/>
             </template>
           </q-input>
-          <div class="col-12 row justify-center q-mt-sm">
-            <span class="col-8 text-h5"> {{ empresaSelecionada.nome }} </span>
-          </div>
         </div>
       </q-toolbar>
-      <div class="col-12 row justify-center">
-        <div class="col-12 row justify-center q-gutter-md topics">
-          <card-topics :Amount="problema.value" :Title="problema.label" :key="index" v-for="(problema, index) in empresaSelecionada.problemas"/>
-        </div>
-      </div>
     </q-header>
-
     <q-page-container class="my-background">
       <router-view />
     </q-page-container>
@@ -32,14 +23,14 @@
 </template>
 
 <script>
-import CardTopics from 'components/CardTopics.vue'
+// import CardTopics from 'components/CardTopics.vue'
 import db from 'boot/database'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'MainLayout',
   components: {
-    CardTopics
+    // CardTopics
   },
   data () {
     return {
@@ -48,7 +39,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('empresas', ['empresas', 'empresaSelecionada'])
+    ...mapState('empresas', ['empresas'])
   },
   mounted () {
     db.ref('/').once('value')
@@ -64,6 +55,7 @@ export default {
       })
       console.log('resultado => ', resultado)
       this.SET_EMPRESASELECIONADA(resultado[0].empresa)
+      this.$router.push('/Dashboard')
     }
   }
 }

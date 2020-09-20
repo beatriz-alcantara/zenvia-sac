@@ -1,19 +1,19 @@
 <template>
   <q-page class="container my-background">
     <div class="row q-pt-md q-col-gutter-lg">
-      <div class="recomedation" style="z-index: 1">
+      <div class="recomedation col-12" style="z-index: 1">
         <recomedation/>
       </div>
       <Aside/>
       <div class="col-7 column">
         <div class="col-2 text-center">
           <span class="titulo"> Histórico de reclamações </span>
-          <p class="paragraph"> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour. Or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text </p>
+          <p class="paragraph"> Este é o histórico da empresa, com todos os dados sobre quantos chamados foram atendidos e quantos não foram </p>
         </div>
         <div class="col-4">
           <div class="row justify-center">
             <div class="col-8">
-              <graph-bar Height="200" :isHorizontal="false"/>
+              <graph-bar Height="150" :isHorizontal="false" :Dados="dadosHistorico" :Labels="labelsGraph"/>
             </div>
           </div>
         </div>
@@ -23,17 +23,8 @@
               <span class="titulo"> Reclamações </span>
             </div>
             <div class="col-12 row justify-center q-col-gutter-md">
-              <div class="col-3">
-                <complaint-card Image="cliente-01.png"/>
-              </div>
-              <div class="col-3">
-                <complaint-card Image="cliente-02.png"/>
-              </div>
-              <div class="col-3">
-                <complaint-card Image="cliente-03.png"/>
-              </div>
-              <div class="col-3">
-                <complaint-card Image="cliente-04.png"/>
+              <div class="col-3" :key="index" v-for="(reclamacao, index) in empresaSelecionada.reclamacoes">
+                <complaint-card :Image="reclamacao.foto" :Complaint="reclamacao.reclamacao" :Nome="reclamacao.nome" :Status="reclamacao.status"/>
               </div>
             </div>
           </div>
@@ -46,11 +37,9 @@
 <script>
 import GraphBar from 'components/GraphBar'
 import ComplaintCard from 'components/ComplaintCard'
-// import CardRanking from 'components/CardRanking'
-// import Comments from 'components/Comments.vue'
-// import CardTopics from 'components/CardTopics.vue'
 import Recomedation from 'components/Recomendation.vue'
 import Aside from 'components/Aside.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'PageIndex',
   components: {
@@ -58,9 +47,33 @@ export default {
     Recomedation,
     Aside,
     ComplaintCard
-    // CardRanking,
-    // Comments,
-    // CardTopics
+  },
+  data () {
+    return {
+      dadosHistorico: [],
+      labelsGraph: [
+        ['Atendidos'],
+        ['Não atendidos']
+      ]
+    }
+  },
+  computed: {
+    ...mapState('empresas', ['empresaSelecionada'])
+  },
+  created () {
+    console.log('empresas selecionada => ', this.empresaSelecionada)
+    this.setDadosHistorico()
+  },
+  methods: {
+    setDadosHistorico () {
+      const data = this.empresaSelecionada.historicoReclamacoes.map(item => item.value)
+      this.dadosHistorico = [
+        {
+          name: 'Histórico',
+          data: data
+        }
+      ]
+    }
   }
 }
 </script>

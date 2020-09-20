@@ -2,7 +2,7 @@
   "name": "zenvia-sac",
   "version": "0.0.1",
   "description": "Produto centralizador de sac para o whatsapp desenvolvido para o hackton da zenvia",
-  "productName": "zenvia-sac",
+  "productName": "VINDII",
   "author": "Beatriz_Alcantara <beatrizalcantara813@gmail.com>",
   "private": true,
   "scripts": {
@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@quasar/icongenie": "^2.3.3",
     "apexcharts": "^3.20.2",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
+    "firebase": "^7.21.0",
     "quasar": "^1.0.0",
     "vue-apexcharts": "^1.6.0"
   },

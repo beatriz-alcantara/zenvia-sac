@@ -11,14 +11,13 @@ export default {
   name: 'GraphBar',
   props: {
     isHorizontal: Boolean,
-    Height: String
+    Height: String,
+    Dados: Array,
+    Labels: Array
   },
   data () {
     return {
-      series: [{
-        name: 'Atendimentos',
-        data: [10, 41, 20]
-      }],
+      series: this.Dados,
       chartOptions: {
         chart: {
           height: 150,
@@ -43,10 +42,7 @@ export default {
           show: false
         },
         xaxis: {
-          categories: [
-            ['Atendidas'],
-            ['Não atendidas']
-          ],
+          categories: this.Labels,
           labels: {
             show: false,
             style: {

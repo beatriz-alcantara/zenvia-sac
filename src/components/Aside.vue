@@ -2,7 +2,6 @@
   <div class="col-4 row bg-primary q-ml-sm">
     <div class="col-12 row text-center q-pt-md items-center no-wrap">
       <span class="text-h6 text-white col-8 q-pl-md">
-        Empresa X - Varejo
         <span class="text-caption text-white"> 8.6/10 </span>
       </span>
       <div class="col-1">
@@ -18,34 +17,37 @@
       <div class="col-8">
         <span class="titulo-bio text-white"> Bio </span>
         <p class="text-white paragraph">
-          Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          {{ empresaSelecionada.bio }}
         </p>
       </div>
     </div>
     <q-separator color="grey-5" class="q-mx-sm"/>
     <div class="col-12 row justify-center q-py-xl">
       <div class="col-12 text-center">
-        <span class="titulo text-white"> 40 min </span>
+        <span class="titulo text-white"> {{ empresaSelecionada.tempoResolucaoProblema }} min </span>
       </div>
       <div class="col-8">
-        <p class="text-white paragraph"> Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+        <p class="text-white paragraph"> Tempo médio que esta empresa leva para resolver os seus chamados. </p>
       </div>
     </div>
     <q-separator color="grey-5" class="q-mx-sm"/>
     <div class="col-12 row justify-center q-py-xl">
       <div class="col-12 text-center">
-        <span class="titulo text-white"> 96% </span>
+        <span class="titulo text-white"> {{ empresaSelecionada.porcentagemResolucao }}% </span>
       </div>
       <div class="col-8">
-        <p class="text-white paragraph"> Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+        <p class="text-white paragraph"> Quantidade de chamados resolvidos desde que a empresa inciou o uso da plataforma vindii. </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-
+  computed: {
+    ...mapState('empresas', ['empresaSelecionada'])
+  }
 }
 </script>
 

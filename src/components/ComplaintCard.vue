@@ -2,16 +2,16 @@
   <q-card class="shadow-5">
     <q-card-section class="text-center">
       <q-avatar>
-        <img :src="Image">
+        <img :src="Image ? Image : 'person.png'">
       </q-avatar>
     </q-card-section>
     <q-card-section>
-      <p class="text-center text-body1"> Lorem ipsum </p>
+      <p class="text-center text-body1"> {{ Nome }} </p>
       <p class="paragraph">
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.
+        {{ Complaint }}
       </p>
       <p class="text-negative paragraph">
-        Não faria negócio novamente
+        {{ Status }}
       </p>
     </q-card-section>
   </q-card>
@@ -20,7 +20,15 @@
 <script>
 export default {
   props: {
-    Image: String
+    Image: String,
+    Complaint: String,
+    Nome: String,
+    Status: String
+  },
+  methods: {
+    getImage (img) {
+      return img || 'person.png'
+    }
   }
 }
 </script>
