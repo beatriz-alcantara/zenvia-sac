@@ -2,6 +2,9 @@
 
 Produto centralizador de sac para o whatsapp desenvolvido para o hackton da zenvia
 
+## Visite o nosso site
+http://vindii.surge.sh/#/
+
 ## Install the dependencies
 ```bash
 npm install
