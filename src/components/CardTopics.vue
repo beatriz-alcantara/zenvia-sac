@@ -1,5 +1,5 @@
 <template>
-  <q-card class="row items-center q-py-sm q-pl-sm" style="width: 18vw">
+  <q-card class="row items-center q-py-sm q-pl-sm" style="width: 18vw;">
     <div class="col-4">
       <q-icon color="black" size="50px" :name="`img:${getImage(Title)}`"/>
     </div>
@@ -25,7 +25,7 @@ export default {
           return 'icone-views.png'
         case 'Chamadas':
           return 'icone-call.png'
-        case 'Não reslvidas':
+        case 'Não resolvidas':
           return 'icone-naores.png'
       }
     }

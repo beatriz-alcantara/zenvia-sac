@@ -2,11 +2,12 @@
   <div class="col-4 row bg-primary q-ml-sm">
     <div class="col-12 row text-center q-pt-md items-center no-wrap">
       <span class="text-h6 text-white col-8 q-pl-md">
+        {{ empresaSelecionada.nome }}
         <span class="text-caption text-white"> 8.6/10 </span>
       </span>
       <div class="col-1">
         <q-avatar>
-          <img src="https://cdn.quasar.dev/img/avatar.png">
+          <img src="renner-logo.png">
         </q-avatar>
       </div>
       <div class="col-2">

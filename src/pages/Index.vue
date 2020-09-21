@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container my-background">
+  <q-page class="container">
     <div class="row q-pt-md q-col-gutter-lg">
       <div class="recomedation col-12" style="z-index: 1">
         <recomedation/>
@@ -51,6 +51,11 @@ export default {
   data () {
     return {
       dadosHistorico: [],
+      form: {
+        nome: '',
+        telefone: '',
+        reclamacao: ''
+      },
       labelsGraph: [
         ['Atendidos'],
         ['Não atendidos']
@@ -82,8 +87,5 @@ export default {
 .recomedation {
   margin-top: -10vh;
   padding-bottom: 5vh;
-}
-.my-background {
-  background-color: #F2F6F9;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="my-background">
     <q-header elevated style="position: relative">
       <q-toolbar class="bg-primary q-py-md row" style="z-index: 1">
         <q-toolbar-title class="row col-2 q-pb-xl"> VINDII </q-toolbar-title>
@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .topics {
   position: absolute;
   z-index: 2;
